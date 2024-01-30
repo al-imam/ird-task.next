@@ -70,15 +70,21 @@ module.exports = {
         muted: {
           DEFAULT: "rgb(var(--muted))",
           foreground: "rgb(var(--muted-foreground))",
+          "muted-100": "rgb(var(--muted-100))",
+          "muted-selected": "rgb(var(--muted-selected))",
+          "muted-foreground-selected": "rgb(var(--muted-foreground-selected))",
         },
+
         accent: {
           DEFAULT: "rgb(var(--accent))",
           foreground: "rgb(var(--accent-foreground))",
         },
+
         popover: {
           DEFAULT: "rgb(var(--popover))",
           foreground: "rgb(var(--popover-foreground))",
         },
+
         card: {
           DEFAULT: "rgb(var(--card))",
           foreground: "rgb(var(--card-foreground))",
@@ -143,51 +149,42 @@ module.exports = {
     plugin(({ addBase, theme }) => {
       addBase({
         [[":root", ".light"]]: {
-          "--background": theme("__colors.zinc-50"),
-          "--foreground": theme("__colors.zinc-950"),
-          "--card": theme("__colors.zinc-50"),
-          "--card-foreground": theme("__colors.zinc-950"),
-          "--popover": theme("__colors.zinc-50"),
-          "--popover-foreground": theme("__colors.zinc-950"),
-          "--primary": theme("__colors.zinc-900"),
-          "--primary-foreground": theme("__colors.zinc-100"),
-          "--secondary": theme("__colors.zinc-100"),
-          "--secondary-foreground": theme("__colors.zinc-900"),
-          "--muted": theme("__colors.zinc-200"),
-          "--muted-foreground": theme("__colors.zinc-500"),
-          "--accent": theme("__colors.zinc-200"),
-          "--accent-foreground": theme("__colors.zinc-950"),
+          "--background": "255 255 255",
+          "--foreground": "57 57 57",
+
+          "--card": "255 255 255",
+          "--card-foreground": "0 0 0",
+
+          "--popover": "255 255 255",
+          "--popover-foreground": "0 0 0",
+
+          "--primary": "31 164 91",
+          "--primary-foreground": "57 57 57",
+
+          "--secondary": "255 255 255",
+          "--secondary-foreground": "0 0 0",
+
+          "--muted": "235 238 242",
+          "--muted-100": "247 248 250",
+          "--muted-selected": "232 240 245",
+
+          "--muted-foreground": "134 134 134",
+          "--muted-foreground-selected": "126 126 126",
+
+          "--accent": "232 240 245",
+          "--accent-foreground": "57 57 57",
+
           "--destructive": theme("__colors.red-500"),
           "--destructive-foreground": theme("__colors.zinc-50"),
-          "--border": theme("__colors.zinc-200"),
+
+          "--border": "226 226 226",
+
           "--input": theme("__colors.zinc-200"),
           "--ring": theme("__colors.zinc-950"),
           "--success": theme("__colors.green-400"),
           "--failure": theme("__colors.red-500"),
           "--radius": "0.5rem",
           "--nav-size": "4rem",
-        },
-
-        ".dark": {
-          "--background": theme("__colors.zinc-950"),
-          "--foreground": theme("__colors.zinc-50"),
-          "--card": theme("__colors.zinc-950"),
-          "--card-foreground": theme("__colors.zinc-50"),
-          "--popover": theme("__colors.zinc-950"),
-          "--popover-foreground": theme("__colors.zinc-50"),
-          "--primary": theme("__colors.zinc-50"),
-          "--primary-foreground": theme("__colors.zinc-900"),
-          "--secondary": theme("__colors.zinc-800"),
-          "--secondary-foreground": theme("__colors.zinc-50"),
-          "--muted": theme("__colors.zinc-800"),
-          "--muted-foreground": theme("__colors.zinc-400"),
-          "--accent": theme("__colors.zinc-800"),
-          "--accent-foreground": theme("__colors.zinc-50"),
-          "--destructive": theme("__colors.red-800"),
-          "--destructive-foreground": theme("__colors.zinc-50"),
-          "--border": theme("__colors.zinc-800"),
-          "--input": theme("__colors.zinc-800"),
-          "--ring": theme("__colors.zinc-300"),
         },
 
         "*": {
