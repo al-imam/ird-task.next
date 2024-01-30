@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Praise
+- Font Author: Copyright 2014 The Praise Project Authors (https://github.com/googlefonts/praise-script)
+- Font Source: http://fonts.gstatic.com/s/praise/v7/qkBUXvUZ-cnFXcFyDvO67L9XmQ.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
