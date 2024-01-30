@@ -1,3 +1,5 @@
+import { DesktopTopNav, SideIconsNav } from "$components/nav";
+import { Settings } from "$components/settings";
 import { Provider } from "$context";
 import "$styles/global.css";
 import { Metadata } from "next";
@@ -31,10 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
       </head>
-      <body
-        className={`bg-background font-sans ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
-      >
-        <Provider>{children}</Provider>
+      <body className={`font-sans ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}>
+        <Provider>
+          <div className="xl:layout-xl lg:layout-lg 2xl:layout-2xl grid gap-[--layout-gap] p-10 pb-0">
+            <SideIconsNav className="row-span-full max-xl:hidden" />
+            <DesktopTopNav className="col-start-2 col-end-[-1] max-xl:hidden" />
+            {children}
+            <Settings className="h-[calc(var(--max-aside-hight)-(var(--top-nav-size,0px)+var(--layout-gap,0px)))] max-2xl:hidden" />
+          </div>
+        </Provider>
       </body>
     </html>
   );

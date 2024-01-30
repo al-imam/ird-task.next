@@ -13,6 +13,7 @@
     "consistent-return": 0,
     "no-underscore-dangle": 0,
     "@next/next/no-img-element": 0,
+    "no-use-before-define": 0,
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
     "no-shadow": 0
   },

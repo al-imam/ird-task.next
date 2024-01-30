@@ -192,7 +192,7 @@ module.exports = {
         },
 
         body: {
-          "@apply bg-background text-foreground": {},
+          "@apply bg-muted text-foreground": {},
         },
       });
     }),
