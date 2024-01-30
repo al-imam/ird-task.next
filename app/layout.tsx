@@ -35,11 +35,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`font-sans ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}>
         <Provider>
-          <div className="xl:layout-xl lg:layout-lg 2xl:layout-2xl grid gap-[--layout-gap] p-10 pb-0">
-            <SideIconsNav className="row-span-full max-xl:hidden" />
+          <div className="xl:layout-xl lg:layout-lg 2xl:layout-2xl grid gap-[--layout-gap] p-[--padding-edge] pb-0 [--padding-edge:1rem] xl:[--padding-edge:2.5rem]">
+            <SideIconsNav className="row-span-full mb-[--padding-edge] max-xl:hidden" />
             <DesktopTopNav className="col-start-2 col-end-[-1] max-xl:hidden" />
             {children}
-            <Settings className="h-[calc(var(--max-aside-hight)-(var(--top-nav-size,0px)+var(--layout-gap,0px)))] max-2xl:hidden" />
+            <Settings className="mb-[--padding-edge] h-[calc(var(--max-aside-hight)-(var(--top-nav-size,0px)+var(--layout-gap,0px)))] max-2xl:hidden" />
           </div>
         </Provider>
       </body>

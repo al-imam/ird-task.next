@@ -58,7 +58,7 @@ function CategoryItem() {
     <li className="flex flex-col" onClick={() => setIsActive(true)}>
       <Link
         href="#"
-        className={cn("hover:bg-muted-selected flex items-center gap-2.5 rounded-[0.625rem] p-2.5", {
+        className={cn("hover:bg-muted-selected group flex items-center gap-2.5 rounded-[0.625rem] p-2.5", {
           "bg-muted-selected": isActive,
         })}
       >
@@ -66,7 +66,13 @@ function CategoryItem() {
           <Image src={duarGurutto} alt="duar-gurutto" className="" />
         </div>
         <div className="flex-1">
-          <span className="line-clamp-1 text-base font-semibold text-primary">Dua&apos;s Importance</span>
+          <span
+            className={cn("line-clamp-1 text-base font-semibold group-hover:text-primary", {
+              "text-primary": isActive,
+            })}
+          >
+            Dua&apos;s Importance
+          </span>
           <span className="text-muted-foreground-selected line-clamp-1 text-sm">Subcategory: 7</span>
         </div>
         <div className="flex flex-col items-center">
