@@ -9,6 +9,8 @@
 
   }
 
+
+
   .layout-2xl {
     grid-template-columns: 105px 350px 1fr 270px;
   }
@@ -23,4 +25,9 @@
     --layout-gap: 1.675rem;
     grid-template-columns: 350px 1fr;
   }
+}
+
+
+:where(button, a):focus-visible {
+  @apply outline-none ring-2 ring-gray-900;
 }
