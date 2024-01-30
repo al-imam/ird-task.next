@@ -70,9 +70,9 @@ module.exports = {
         muted: {
           DEFAULT: "rgb(var(--muted))",
           foreground: "rgb(var(--muted-foreground))",
-          "muted-100": "rgb(var(--muted-100))",
-          "muted-selected": "rgb(var(--muted-selected))",
-          "muted-foreground-selected": "rgb(var(--muted-foreground-selected))",
+          100: "rgb(var(--muted-100))",
+          selected: "rgb(var(--muted-selected))",
+          "foreground-selected": "rgb(var(--muted-foreground-selected))",
         },
 
         accent: {

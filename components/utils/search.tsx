@@ -15,12 +15,12 @@ const SearchCategory = forwardRef<HTMLInputElement, InputProps>(({ className, ty
     <label
       htmlFor={id}
       className={cn(
-        "group flex h-full gap-1.5 rounded-md border-none bg-background text-sm outline outline-1 outline-border",
+        "group flex h-12 w-full gap-1.5 rounded-md border-none bg-background text-sm shadow outline outline-1 outline-border",
         { "outline-2 outline-primary": isFocused },
         className
       )}
     >
-      <div className="m-1 flex cursor-pointer items-center justify-center rounded-sm px-2 focus-visible:outline-none">
+      <div className="my-1 ml-2 mr-0 flex cursor-pointer items-center justify-center rounded-sm px-1 focus-visible:outline-none">
         <Image src={searchIcon} alt="search" />
       </div>
       <input
@@ -28,7 +28,7 @@ const SearchCategory = forwardRef<HTMLInputElement, InputProps>(({ className, ty
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         type={type}
-        className={cn("focus-visible: !p-4 !pr-0 [all:unset]  group-hover:cursor-text", { "": isFocused })}
+        className={cn("focus-visible: w-full !p-4 !pl-0  [all:unset] group-hover:cursor-text", { "": isFocused })}
         ref={ref}
         {...props}
       />
@@ -44,7 +44,7 @@ const SearchGlobal = forwardRef<HTMLInputElement, InputProps>(({ className, type
     <label
       htmlFor={id}
       className={cn(
-        "group flex h-full gap-1.5 rounded-md border-none bg-background text-sm outline outline-1 outline-border",
+        "group flex h-full gap-1.5 rounded-md border-none bg-background text-sm shadow outline outline-1 outline-border",
         { "outline-2 outline-primary": isFocused },
         className
       )}
