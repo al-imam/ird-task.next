@@ -2,6 +2,7 @@ import { Provider } from "$context";
 import "$styles/global.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 
 export const metadata: Metadata = {
   title: "Dua & Ruqyah | All Duas Collection",
@@ -16,9 +17,15 @@ const inter = Inter({
   preload: true,
 });
 
+const meQuran = LocalFont({
+  src: "../public/fonts/me_quran-regular.ttf",
+  variable: "--font-me-quran",
+  preload: true,
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={[inter.variable].join(" ")} suppressHydrationWarning>
+    <html lang="en" className={[inter.variable, meQuran.variable].join(" ")} suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
