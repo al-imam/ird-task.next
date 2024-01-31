@@ -41,7 +41,7 @@ export default async function DuaPage({
           <Fragment key={subCat.id}>
             <div
               id={`sub-${subCat.subcat_id}`}
-              className={`${subCat.cat_id}-${subCat.subcat_id} scroll-m-10 rounded-[0.625rem] border bg-background px-8 py-4`}
+              className={`scroll-m-10 rounded-[0.625rem] border bg-background px-8 py-4`}
             >
               <p className="text-base">
                 <span className="font-medium text-primary">Section:</span> {subCat.subcat_name_en}

@@ -56,12 +56,7 @@ export function Category({ nav, className, close, ...rest }: CategoryProps) {
       {isActive && nav.sub_categories.length > 0 && (
         <ul className="ml-6 flex flex-col gap-2 border-l border-dashed border-primary pt-3">
           {nav.sub_categories.map(sub => (
-            <SubCategory
-              nav={sub}
-              catName={slugify(nav.cat_name_en, { lower: true })}
-              catId={nav.cat_id}
-              key={sub.subcat_id}
-            />
+            <SubCategory nav={sub} catName={slugify(nav.cat_name_en, { lower: true })} key={sub.subcat_id} />
           ))}
         </ul>
       )}
