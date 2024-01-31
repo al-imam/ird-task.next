@@ -4,8 +4,10 @@ import duarGurutto from "$assets/icons/duar_gurutto.svg";
 import { SubCategory } from "$components/nav/sub-category";
 import { cn } from "$shadcn/utils";
 import { Navigation } from "$types";
+import { joinUrl } from "$util";
 import Image from "next/image";
 import Link from "next/link";
+import slugify from "slugify";
 import { useCategory } from "./categories.context";
 
 interface CategoryProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
@@ -20,7 +22,7 @@ export function Category({ nav, className, ...rest }: CategoryProps) {
   return (
     <li className="flex flex-col py-2" onClick={() => setActiveCat(nav.cat_id)}>
       <Link
-        href={"#"}
+        href={joinUrl("/", slugify(nav.cat_name_en, { lower: true }), `?cat=${nav.cat_id}`)}
         {...rest}
         className={cn(
           "group flex items-center gap-2.5 rounded-[0.625rem] p-2.5 shadow-sm hover:bg-muted-selected",

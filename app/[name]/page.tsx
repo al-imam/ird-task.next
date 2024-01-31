@@ -1,7 +1,10 @@
 import { DuaCard } from "$components/dua-card";
 import { ScrollArea } from "$shadcn/ui/scroll-area";
 
-export default async function Home() {
+export default async function DuaPage({ ...rest }) {
+  // eslint-disable-next-line no-console
+  console.log(rest);
+
   return (
     <ScrollArea className="">
       <main className="flex flex-col gap-3 pb-[--padding-edge]">
