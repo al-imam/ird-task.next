@@ -1,16 +1,25 @@
 import { DuaCard } from "$components/dua-card";
 import { ScrollArea } from "$shadcn/ui/scroll-area";
-import { Category } from "$types";
+import { Category, Navigation } from "$types";
 import { joinUrl } from "$util";
 import axios from "axios";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Fragment } from "react";
+import slugify from "slugify";
+
+export async function generateStaticParams(): Promise<{ name: string }[]> {
+  const { data } = await axios.get<Navigation[]>(joinUrl(process.env.NEXT_PUBLIC_API_URL, "navigation"));
+
+  return data.map(nav => ({ name: slugify(nav.cat_name_en, { lower: true }) }));
+}
 
 export default async function DuaPage({ searchParams }: { searchParams: Record<string, string> }) {
   const cat = parseInt(searchParams.cat ?? "", 10);
   if (isNaN(cat)) redirect("/");
 
   const { data } = await axios.get<Category[]>(joinUrl(process.env.NEXT_PUBLIC_API_URL, "/dua/category", cat));
+  if (data.length === 0) return notFound();
+
   const subCats = data.map(c => c.sub_categories).flat(1);
 
   return (

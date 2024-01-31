@@ -5,7 +5,7 @@ export function ThemePreview() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="grid grid-cols-6 grid-rows-2 gap-4 break-all p-10 font-display text-xs drop-shadow-sm [&_*]:uppercase [&_*]:text-fuchsia-600">
+      <div className="font-display grid grid-cols-6 grid-rows-2 gap-4 break-all p-10 text-xs drop-shadow-sm [&_*]:uppercase [&_*]:text-fuchsia-600">
         <div className={cn(cs, "bg-background")}>background</div>
         <div className={cn(cs, "bg-foreground")}>foreground</div>
         <div className={cn(cs, "bg-muted")}>muted</div>
