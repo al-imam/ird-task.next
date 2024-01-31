@@ -34,6 +34,9 @@ export default async function DuaPage({
   return (
     <ScrollArea className="mb-[--padding-edge]">
       <main className="flex flex-col gap-3">
+        {subCats.length === 0 && (
+          <p className="my-auto h-full py-10 text-center text-4xl font-semibold">No duas found</p>
+        )}
         {subCats.map(subCat => (
           <Fragment key={subCat.id}>
             <div

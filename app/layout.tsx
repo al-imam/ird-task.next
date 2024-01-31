@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
       </head>
       <body
-        className={`grid h-screen font-sans [--padding-edge:1rem] xl:[--padding-edge:2.5rem] ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
+        className={`grid h-screen content-between font-sans [--padding-edge:1rem] xl:[--padding-edge:2.5rem] ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined}`}
       >
         <Provider>
           <div className="bg-background px-[--padding-edge] py-4 xl:hidden">
