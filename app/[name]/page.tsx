@@ -13,12 +13,21 @@ export async function generateStaticParams(): Promise<{ name: string }[]> {
   return data.map(nav => ({ name: slugify(nav.cat_name_en, { lower: true }) }));
 }
 
-export default async function DuaPage({ searchParams }: { searchParams: Record<string, string> }) {
+export default async function DuaPage({
+  searchParams,
+  params,
+}: {
+  searchParams: Record<string, string>;
+  params: { name: string };
+}) {
   const cat = parseInt(searchParams.cat ?? "", 10);
   if (isNaN(cat)) redirect("/");
 
   const { data } = await axios.get<Category[]>(joinUrl(process.env.NEXT_PUBLIC_API_URL, "/dua/category", cat));
   if (data.length === 0) return notFound();
+
+  const name = slugify(data[0].cat_name_en, { lower: true });
+  if (params.name !== name) return redirect(`/${name}?cat=${cat}`);
 
   const subCats = data.map(c => c.sub_categories).flat(1);
 
