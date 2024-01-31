@@ -44,7 +44,7 @@ function Icon({ icon, sr }: { icon: any; sr: string }) {
   return (
     <Link
       href="#"
-      className="bg-muted-selected flex h-[2.375rem] w-[2.375rem] items-center justify-center rounded-full transition-transform hover:scale-105"
+      className="flex h-[2.375rem] w-[2.375rem] items-center justify-center rounded-full bg-muted-selected transition-transform hover:scale-105"
     >
       <Image src={icon} alt="icon" className="h-5 w-5 " />
       <span className="sr-only">{sr}</span>

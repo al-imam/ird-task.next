@@ -1,7 +1,11 @@
 import { DesktopTopNav, SideIconsNav } from "$components/nav";
+import { Categories } from "$components/nav/categories";
 import { Settings } from "$components/settings";
 import { Provider } from "$context";
 import "$styles/global.css";
+import { Navigation } from "$types";
+import { joinUrl } from "$util";
+import axios from "axios";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
@@ -25,7 +29,9 @@ const meQuran = LocalFont({
   preload: true,
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { data } = await axios.get<Navigation[]>(joinUrl(process.env.NEXT_PUBLIC_API_URL, "navigation"));
+
   return (
     <html lang="en" className={[inter.variable, meQuran.variable].join(" ")} suppressHydrationWarning>
       <head>
@@ -38,6 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="xl:layout-xl lg:layout-lg 2xl:layout-2xl grid gap-[--layout-gap] p-[--padding-edge] pb-0 [--padding-edge:1rem] xl:[--padding-edge:2.5rem]">
             <SideIconsNav className="row-span-full mb-[--padding-edge] max-xl:hidden" />
             <DesktopTopNav className="col-start-2 col-end-[-1] max-xl:hidden" />
+            <Categories
+              navigation={data}
+              className="mb-[--padding-edge] h-[calc(var(--max-aside-hight)-(var(--top-nav-size,0px)+var(--layout-gap,0px)))] max-lg:hidden"
+            />
             {children}
             <Settings className="mb-[--padding-edge] h-[calc(var(--max-aside-hight)-(var(--top-nav-size,0px)+var(--layout-gap,0px)))] max-2xl:hidden" />
           </div>
