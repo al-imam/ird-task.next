@@ -15,7 +15,7 @@ const SearchCategory = forwardRef<HTMLInputElement, InputProps>(({ className, ty
     <label
       htmlFor={id}
       className={cn(
-        "group flex h-12 w-full gap-1.5 rounded-md border-none bg-background text-sm shadow outline outline-1 outline-border",
+        "group flex h-12 !w-full gap-1.5 rounded-md border-none bg-background text-sm shadow outline outline-1 outline-border",
         { "outline-2 outline-primary": isFocused },
         className
       )}
@@ -28,7 +28,7 @@ const SearchCategory = forwardRef<HTMLInputElement, InputProps>(({ className, ty
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         type={type}
-        className={cn("focus-visible: w-full !p-4 !pl-0  [all:unset] group-hover:cursor-text", { "": isFocused })}
+        className={cn("!w-full !p-4 !pl-0  [all:unset] group-hover:cursor-text", { "": isFocused })}
         ref={ref}
         {...props}
       />

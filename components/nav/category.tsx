@@ -1,11 +1,9 @@
 "use client";
 
-import duarGurutto from "$assets/icons/duar_gurutto.svg";
 import { SubCategory } from "$components/nav/sub-category";
 import { cn } from "$shadcn/utils";
 import { Navigation } from "$types";
 import { joinUrl } from "$util";
-import Image from "next/image";
 import Link from "next/link";
 import slugify from "slugify";
 import { useCategory } from "./categories.context";
@@ -31,7 +29,7 @@ export function Category({ nav, className, ...rest }: CategoryProps) {
         )}
       >
         <div className="h-[3.75rem] rounded-[0.625rem] bg-[rgb(var(--list-img-bg))] p-2.5">
-          <Image src={duarGurutto} alt={nav.cat_name_bn} className="" />
+          <img src={`/icons/${nav.cat_icon}.svg`} alt={nav.cat_name_en} className="" />
         </div>
         <div className={cn("flex-1 border-r pr-1 group-hover:border-r-0", { "border-r-0": isActive })}>
           <span
