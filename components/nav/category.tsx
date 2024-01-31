@@ -10,15 +10,22 @@ import { useCategory } from "./categories.context";
 
 interface CategoryProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
   nav: Navigation;
+  close: () => void;
 }
 
-export function Category({ nav, className, ...rest }: CategoryProps) {
+export function Category({ nav, className, close, ...rest }: CategoryProps) {
   const { setActiveCat, active } = useCategory();
 
   const isActive = nav.cat_id === active.cat;
 
   return (
-    <li className="flex flex-col py-2" onClick={() => setActiveCat(nav.cat_id)}>
+    <li
+      className="flex flex-col py-2"
+      onClick={() => {
+        setActiveCat(nav.cat_id);
+        close();
+      }}
+    >
       <Link
         href={joinUrl("/", slugify(nav.cat_name_en, { lower: true }), `?cat=${nav.cat_id}`)}
         {...rest}

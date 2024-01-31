@@ -15,21 +15,13 @@ interface SideIconsNavProps extends React.DetailedHTMLProps<React.HTMLAttributes
 
 export function SideIconsNav({ className, ...rest }: SideIconsNavProps) {
   return (
-    <nav className={cn("w-[6.25rem] ", className)} {...rest}>
-      <div className="flex h-[var(--max-aside-hight)] flex-col items-center justify-between rounded-3xl bg-background py-7">
+    <nav className={cn("w-[6.25rem]", className)} {...rest}>
+      <div className="flex h-full flex-col items-center justify-between rounded-3xl bg-background py-7">
         <div>
           <Image src={duaLogo} alt="dua-logo" className="h-[4.5625rem] w-[4.5625rem]" />
         </div>
 
-        <div className="flex flex-col gap-7">
-          <Icon icon={homeIcon} sr="home" />
-          <Icon icon={allduaIcon} sr="all dua" />
-          <Icon icon={planIcon} sr="plan" />
-          <Icon icon={bookmarkIcon} sr="bookmark" />
-          <Icon icon={ruqyahIcon} sr="ruqyah" />
-          <Icon icon={duaInfoIcon} sr="dua info" />
-          <Icon icon={booksIcon} sr="books" />
-        </div>
+        <Icons />
 
         <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-[0.625rem] bg-primary">
           <Image src={donationIcon} alt="donation" className="" />
@@ -37,6 +29,22 @@ export function SideIconsNav({ className, ...rest }: SideIconsNavProps) {
         </div>
       </div>
     </nav>
+  );
+}
+
+interface IconsProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+export function Icons({ className, ...rest }: IconsProps) {
+  return (
+    <div className={cn("flex flex-col gap-7", className)} {...rest}>
+      <Icon icon={homeIcon} sr="home" />
+      <Icon icon={allduaIcon} sr="all dua" />
+      <Icon icon={planIcon} sr="plan" />
+      <Icon icon={bookmarkIcon} sr="bookmark" />
+      <Icon icon={ruqyahIcon} sr="ruqyah" />
+      <Icon icon={duaInfoIcon} sr="dua info" />
+      <Icon icon={booksIcon} sr="books" />
+    </div>
   );
 }
 

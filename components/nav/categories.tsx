@@ -10,9 +10,10 @@ import { useMemo, useState } from "react";
 
 interface CategoriesProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
   navigation: Navigation[];
+  close?: () => void;
 }
 
-export function Categories({ className, navigation, ...rest }: CategoriesProps) {
+export function Categories({ className, navigation, close = () => {}, ...rest }: CategoriesProps) {
   const [search, setSearch] = useState("");
 
   const navigationFiltered = useMemo(
@@ -29,8 +30,8 @@ export function Categories({ className, navigation, ...rest }: CategoriesProps) 
         )}
         {...rest}
       >
-        <div className="bg-primary p-[1.125rem] text-center">
-          <span className="text-base font-semibold text-white">Categories</span>
+        <div className="bg-primary p-6 text-center lg:p-[1.125rem]">
+          <span className="text-lg font-semibold text-white lg:text-base">Categories</span>
         </div>
         <div className="px-4">
           <SearchCategory
@@ -43,7 +44,7 @@ export function Categories({ className, navigation, ...rest }: CategoriesProps) 
         <ScrollArea className="mb-2 px-4 pb-2">
           <ul>
             {navigationFiltered.map(nav => (
-              <Category nav={nav} key={nav.cat_id} />
+              <Category nav={nav} key={nav.cat_id} close={close} />
             ))}
           </ul>
         </ScrollArea>

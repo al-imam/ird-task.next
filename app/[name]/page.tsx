@@ -32,8 +32,8 @@ export default async function DuaPage({
   const subCats = data.map(c => c.sub_categories).flat(1);
 
   return (
-    <ScrollArea className="">
-      <main className="flex flex-col gap-3 pb-[--padding-edge]">
+    <ScrollArea className="mb-[--padding-edge]">
+      <main className="flex flex-col gap-3">
         {subCats.map(subCat => (
           <Fragment key={subCat.id}>
             <div

@@ -20,8 +20,8 @@ export function Settings({ className }: SettingsProps) {
 
   return (
     <aside className={cn("rounded-3xl border bg-background p-4", className)}>
-      <div className="p-4 text-center">
-        <p className="font-base font-semibold">Settings</p>
+      <div className="p-4 text-center max-2xl:py-8">
+        <p className="text-base  font-semibold max-2xl:text-lg">Settings</p>
       </div>
       <div className="space-y-4">
         <SettingItem
