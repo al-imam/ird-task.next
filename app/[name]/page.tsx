@@ -36,7 +36,10 @@ export default async function DuaPage({
       <main className="flex flex-col gap-3 pb-[--padding-edge]">
         {subCats.map(subCat => (
           <Fragment key={subCat.id + subCat.cat_id + subCat.subcat_id}>
-            <div className="rounded-[0.625rem] border bg-background px-8 py-4">
+            <div
+              id={`${subCat.cat_id}-${subCat.subcat_id}`}
+              className="rounded-[0.625rem] border bg-background px-8 py-4"
+            >
               <p className="text-base">
                 <span className="font-medium text-primary">Section:</span> {subCat.subcat_name_en}
               </p>

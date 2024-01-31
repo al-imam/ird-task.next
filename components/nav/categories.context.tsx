@@ -1,8 +1,10 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 /* eslint-disable no-unused-vars */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useSearchParam } from "react-use";
 
 interface CategoriesValue {
   active: Record<"cat" | "sub" | "dua", number | null>;
@@ -15,6 +17,23 @@ const CategoriesContext = createContext<CategoriesValue | null>(null);
 
 export function CategoriesProvider({ children }: React.PropsWithChildren) {
   const [active, setActive] = useState<CategoriesValue["active"]>({ cat: null, dua: null, sub: null });
+  const sp = useSearchParams();
+
+  useEffect(() => {
+    const sub = parseInt(sp.get("sub") ?? "", 10);
+    const cat = parseInt(sp.get("cat") ?? "", 10);
+    if (!isNaN(cat)) setActive(prev => ({ ...prev, sub, cat }));
+    if (!isNaN(sub)) setActive(prev => ({ ...prev, sub }));
+  }, []);
+
+  useEffect(() => {
+    const sub = parseInt(sp.get("sub") ?? "", 10);
+    const cat = parseInt(sp.get("cat") ?? "", 10);
+    if (!isNaN(sub) && !isNaN(cat)) {
+      const element = document.getElementById(`${cat}-${sub}`);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [sp.get("sub")]);
 
   function setActiveDua(id: number | null) {
     setActive(prev => ({ ...prev, dua: id }));

@@ -7,9 +7,11 @@ import { useCategory } from "./categories.context";
 
 interface SubCategoryProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
   nav: Navigation["sub_categories"][0];
+  catName: string;
+  catId: number;
 }
 
-export function SubCategory({ className, nav, ...rest }: SubCategoryProps) {
+export function SubCategory({ className, nav, catId, catName, ...rest }: SubCategoryProps) {
   const { setActiveSub, active } = useCategory();
 
   const isActive = active.sub === nav.subcat_id && nav.cat_id === active.cat;
@@ -17,7 +19,7 @@ export function SubCategory({ className, nav, ...rest }: SubCategoryProps) {
   return (
     <li>
       <Link
-        href={"#"}
+        href={`/${catName}?cat=${catId}&sub=${nav.subcat_id}`}
         onClick={() => setActiveSub(nav.subcat_id)}
         {...rest}
         className={cn(
