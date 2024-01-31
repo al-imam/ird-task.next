@@ -3,30 +3,25 @@
 @tailwind utilities;
 
 @layer components {
-
   :root {
     --max-aside-hight: 56.25rem;
-
   }
 
-
-
   .layout-2xl {
-    grid-template-columns: 105px 350px 1fr 270px;
+    grid-template-columns: 105px 429px 1fr 330px;
   }
 
   .layout-xl {
     --top-nav-size: 2.875rem;
     grid-template-rows: var(--top-nav-size) 1fr;
-    grid-template-columns: 105px 350px 1fr;
+    grid-template-columns: 105px 429px 1fr;
   }
-  
+
   .layout-lg {
     --layout-gap: 1.675rem;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 429px 1fr;
   }
 }
-
 
 :where(button, a):focus-visible {
   @apply outline-none ring-2 ring-gray-900;
