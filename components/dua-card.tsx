@@ -7,10 +7,14 @@ import reportIcon from "$assets/icons/report.svg";
 import shareIcon from "$assets/icons/share.svg";
 import { Dua } from "$types";
 import Image from "next/image";
+import slugify from "slugify";
 
 export function DuaCard({ dua }: { dua: Dua }) {
   return (
-    <div className="flex flex-col gap-7 rounded-[0.625rem] border bg-background px-8 py-4">
+    <div
+      id={slugify(dua.dua_name_en ?? Math.random().toString(), { lower: true })}
+      className="flex flex-col gap-7 rounded-[0.625rem] border bg-background px-8 py-4"
+    >
       <p className="flex items-center gap-2.5 text-base font-medium text-primary">
         <Image src={duaCardIcon} alt="allah" /> <span>{dua.dua_name_en}</span>
       </p>

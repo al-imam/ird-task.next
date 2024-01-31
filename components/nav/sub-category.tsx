@@ -5,6 +5,7 @@ import { Navigation } from "$types";
 import Link from "next/link";
 import slugify from "slugify";
 import { useCategory } from "./categories.context";
+import { DuaName } from "./dua-name";
 
 interface SubCategoryProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
   nav: Navigation["sub_categories"][0];
@@ -36,6 +37,13 @@ export function SubCategory({ className, nav, catId, catName, ...rest }: SubCate
       >
         {nav.subcat_name_en}
       </Link>
+      {isActive && (
+        <ul>
+          {nav.duas.map(dua => (
+            <DuaName key={dua.id} nav={dua} catName={catName} catId={catId} />
+          ))}
+        </ul>
+      )}
     </li>
   );
 }
