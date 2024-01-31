@@ -1,17 +1,13 @@
 "use client";
 
-import fontIcon from "$assets/icons/font.svg";
-import generaleIcon from "$assets/icons/general.svg";
-import languageIcon from "$assets/icons/language.svg";
-
+import { FontIcon, GeneraleIcon, LanguageIcon } from "$icons";
 import { Checkbox } from "$shadcn/ui/checkbox";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "$shadcn/ui/select";
 import { Slider } from "$shadcn/ui/slider";
 import { Switch } from "$shadcn/ui/switch";
 import { cn } from "$shadcn/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
+import { SVGProps, useState } from "react";
 
 interface SettingsProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {}
 
@@ -25,7 +21,7 @@ export function Settings({ className }: SettingsProps) {
       </div>
       <div className="space-y-4">
         <SettingItem
-          icon={languageIcon}
+          Icon={LanguageIcon}
           text="Language Settings"
           value="language"
           setActive={setActive}
@@ -37,7 +33,7 @@ export function Settings({ className }: SettingsProps) {
           </div>
         </SettingItem>
         <SettingItem
-          icon={generaleIcon}
+          Icon={GeneraleIcon}
           text="Generale Settings"
           value="generale"
           setActive={setActive}
@@ -62,7 +58,7 @@ export function Settings({ className }: SettingsProps) {
             </label>
           </div>
         </SettingItem>
-        <SettingItem icon={fontIcon} text="Font Settings" value="font" setActive={setActive} active={active}>
+        <SettingItem Icon={FontIcon} text="Font Settings" value="font" setActive={setActive} active={active}>
           <div className="flex flex-col gap-4 rounded-b-md border border-t-0 px-4 py-5 *:flex-1">
             <div className="space-y-3">
               <span>Translation Font Size</span>
@@ -105,7 +101,7 @@ export function Settings({ className }: SettingsProps) {
           </div>
         </SettingItem>
         <SettingItem
-          icon={fontIcon}
+          Icon={FontIcon}
           text="Appearance Settings"
           value="appearance"
           setActive={setActive}
@@ -125,14 +121,14 @@ export function Settings({ className }: SettingsProps) {
 
 interface SettingItemProps {
   children: React.ReactNode;
-  icon: any;
+  Icon: React.FC<SVGProps<SVGSVGElement>>;
   text: string;
   value: string;
   active: string | null;
   setActive: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-function SettingItem({ children, text, icon, setActive, value, active }: SettingItemProps) {
+function SettingItem({ children, text, Icon, setActive, value, active }: SettingItemProps) {
   const isOpen = value === active;
 
   return (
@@ -141,13 +137,13 @@ function SettingItem({ children, text, icon, setActive, value, active }: Setting
         <motion.div
           key="question"
           className={cn(
-            "relative flex cursor-pointer items-center gap-2 rounded-md bg-muted-100 p-2 pl-3 before:pointer-events-none before:absolute before:inset-0 before:right-auto before:w-1  before:rounded-l-full",
+            "relative flex cursor-pointer items-center gap-2.5 rounded-md bg-muted-100 p-2.5 pl-4 before:pointer-events-none before:absolute before:inset-0 before:right-auto before:w-1  before:rounded-l-full",
             { "before:bg-primary": isOpen }
           )}
           onClick={() => setActive(value)}
         >
-          <div className="flex h-[2.375rem] w-[2.375rem] items-center justify-center rounded-full bg-muted-selected">
-            <Image src={icon} alt={text} />
+          <div className="flex h-[2.375rem]  w-[2.375rem] items-center justify-center rounded-full bg-muted-selected">
+            <Icon className={cn("text-[rgb(134,134,134)]", { "text-primary": isOpen })} />
           </div>
           <span className={cn("font-medium text-[rgb(134,134,134)]", { "text-primary": isOpen })}>{text}</span>
         </motion.div>
@@ -163,7 +159,6 @@ function SettingItem({ children, text, icon, setActive, value, active }: Setting
               },
             }}
             exit={{ opacity: 0 }}
-            className=""
           >
             {children}
           </motion.div>
