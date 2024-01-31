@@ -35,10 +35,10 @@ export default async function DuaPage({
     <ScrollArea className="">
       <main className="flex flex-col gap-3 pb-[--padding-edge]">
         {subCats.map(subCat => (
-          <Fragment key={subCat.id + subCat.cat_id + subCat.subcat_id}>
+          <Fragment key={subCat.id}>
             <div
-              id={`${subCat.cat_id}-${subCat.subcat_id}`}
-              className="rounded-[0.625rem] border bg-background px-8 py-4"
+              id={slugify(subCat.subcat_name_en, { lower: true })}
+              className={`${subCat.cat_id}-${subCat.subcat_id} scroll-m-10 rounded-[0.625rem] border bg-background px-8 py-4`}
             >
               <p className="text-base">
                 <span className="font-medium text-primary">Section:</span> {subCat.subcat_name_en}

@@ -3,6 +3,7 @@
 import { cn } from "$shadcn/utils";
 import { Navigation } from "$types";
 import Link from "next/link";
+import slugify from "slugify";
 import { useCategory } from "./categories.context";
 
 interface SubCategoryProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
@@ -13,17 +14,22 @@ interface SubCategoryProps extends Omit<React.ComponentProps<typeof Link>, "href
 
 export function SubCategory({ className, nav, catId, catName, ...rest }: SubCategoryProps) {
   const { setActiveSub, active } = useCategory();
-
-  const isActive = active.sub === nav.subcat_id && nav.cat_id === active.cat;
+  const isActive = nav.subcat_id === active.sub && catId === active.cat;
 
   return (
-    <li>
+    <li className="relative pl-4 before:absolute before:inset-0 before:-left-[3px] before:my-auto before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary before:content-['']">
       <Link
         href={`/${catName}?cat=${catId}&sub=${nav.subcat_id}`}
-        onClick={() => setActiveSub(nav.subcat_id)}
+        onClick={() => {
+          setActiveSub(nav.subcat_id);
+          setTimeout(() => {
+            const element = document.getElementById(slugify(nav.subcat_name_en, { lower: true }));
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+          }, 200);
+        }}
         {...rest}
         className={cn(
-          "relative block pl-4 text-base font-medium leading-snug before:absolute before:inset-0 before:-left-[3px] before:my-auto before:h-1.5 before:w-1.5 before:rounded-full before:bg-primary before:content-[''] hover:text-primary",
+          "relative block text-base font-medium leading-snug hover:text-primary",
           { "text-primary": isActive },
           className
         )}

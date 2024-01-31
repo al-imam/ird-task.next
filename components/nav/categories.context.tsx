@@ -1,10 +1,8 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 /* eslint-disable no-unused-vars */
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { useSearchParam } from "react-use";
 
 interface CategoriesValue {
   active: Record<"cat" | "sub" | "dua", number | null>;
@@ -17,23 +15,26 @@ const CategoriesContext = createContext<CategoriesValue | null>(null);
 
 export function CategoriesProvider({ children }: React.PropsWithChildren) {
   const [active, setActive] = useState<CategoriesValue["active"]>({ cat: null, dua: null, sub: null });
-  const sp = useSearchParams();
 
   useEffect(() => {
-    const sub = parseInt(sp.get("sub") ?? "", 10);
-    const cat = parseInt(sp.get("cat") ?? "", 10);
-    if (!isNaN(cat)) setActive(prev => ({ ...prev, sub, cat }));
+    const qp = new URLSearchParams(window.location.search);
+    const sub = parseInt(qp.get("sub") ?? "", 10);
+    const cat = parseInt(qp.get("cat") ?? "", 10);
+    const dua = parseInt(qp.get("dua") ?? "", 10);
+    if (!isNaN(cat)) setActive(prev => ({ ...prev, cat }));
     if (!isNaN(sub)) setActive(prev => ({ ...prev, sub }));
-  }, []);
+    if (!isNaN(dua)) setActive(prev => ({ ...prev, dua }));
 
-  useEffect(() => {
-    const sub = parseInt(sp.get("sub") ?? "", 10);
-    const cat = parseInt(sp.get("cat") ?? "", 10);
-    if (!isNaN(sub) && !isNaN(cat)) {
-      const element = document.getElementById(`${cat}-${sub}`);
+    if (!isNaN(cat) && !isNaN(sub)) {
+      const element = document.getElementsByClassName(`.${cat}-${sub}`)[0];
       if (element) element.scrollIntoView({ behavior: "smooth" });
     }
-  }, [sp.get("sub")]);
+
+    if (!isNaN(cat) && !isNaN(sub) && !isNaN(dua)) {
+      const element = document.getElementsByClassName(`${cat}-${sub}-${dua}`)[0];
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   function setActiveDua(id: number | null) {
     setActive(prev => ({ ...prev, dua: id }));
