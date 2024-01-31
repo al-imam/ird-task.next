@@ -25,23 +25,31 @@ export function CategoriesProvider({ children }: React.PropsWithChildren) {
     if (!isNaN(sub)) setActive(prev => ({ ...prev, sub }));
     if (!isNaN(dua)) setActive(prev => ({ ...prev, dua }));
 
-    if (!isNaN(cat) && !isNaN(sub)) {
-      const element = document.getElementsByClassName(`.${cat}-${sub}`)[0];
+    if (!isNaN(sub)) {
+      const element = document.getElementById(`sub-${sub}`);
       if (element) element.scrollIntoView({ behavior: "smooth" });
     }
 
-    if (!isNaN(cat) && !isNaN(sub) && !isNaN(dua)) {
-      const element = document.getElementsByClassName(`${cat}-${sub}-${dua}`)[0];
+    if (!isNaN(dua)) {
+      const element = document.getElementById(`dua-${dua}`);
       if (element) element.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
   function setActiveDua(id: number | null) {
     setActive(prev => ({ ...prev, dua: id }));
+    setTimeout(() => {
+      const element = document.getElementById(`dua-${id}`);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }, 200);
   }
 
   function setActiveSub(id: number | null) {
     setActive(prev => ({ ...prev, sub: id }));
+    setTimeout(() => {
+      const element = document.getElementById(`sub-${id}`);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }, 200);
   }
 
   function setActiveCat(id: number | null) {

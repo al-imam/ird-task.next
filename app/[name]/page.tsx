@@ -40,7 +40,7 @@ export default async function DuaPage({
         {subCats.map(subCat => (
           <Fragment key={subCat.id}>
             <div
-              id={slugify(subCat.subcat_name_en, { lower: true })}
+              id={`sub-${subCat.subcat_id}`}
               className={`${subCat.cat_id}-${subCat.subcat_id} scroll-m-10 rounded-[0.625rem] border bg-background px-8 py-4`}
             >
               <p className="text-base">
