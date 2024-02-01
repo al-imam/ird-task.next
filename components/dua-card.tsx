@@ -1,10 +1,6 @@
-import bookmarkIcon from "$assets/icons/bookmark.svg";
-import copyIcon from "$assets/icons/copy.svg";
 import duaCardIcon from "$assets/icons/duacard.svg";
-import planIcon from "$assets/icons/plan.svg";
-import reportIcon from "$assets/icons/report.svg";
-import shareIcon from "$assets/icons/share.svg";
 import { PLayer } from "$components/audio";
+import { DuaCardAction } from "$components/dua-card-action";
 import { Dua } from "$types";
 import Image from "next/image";
 
@@ -46,23 +42,7 @@ export function DuaCard({ dua }: { dua: Dua }) {
           </div>
         )}
 
-        <div className="ml-auto flex h-full items-center justify-between gap-4 sm:gap-8">
-          <button className="transition-transform hover:scale-105 focus-visible:ring-0">
-            <Image src={copyIcon} alt="copy" />
-          </button>
-          <button className="transition-transform hover:scale-105 focus-visible:ring-0">
-            <Image src={bookmarkIcon} alt="bookmark" />
-          </button>
-          <button className="transition-transform hover:scale-105 focus-visible:ring-0">
-            <Image src={planIcon} alt="memorize" />
-          </button>
-          <button className="transition-transform hover:scale-105 focus-visible:ring-0">
-            <Image src={shareIcon} alt="share" />
-          </button>
-          <button className="transition-transform hover:scale-105 focus-visible:ring-0">
-            <Image src={reportIcon} alt="report" />
-          </button>
-        </div>
+        <DuaCardAction />
       </div>
     </div>
   );

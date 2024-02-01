@@ -89,7 +89,7 @@ export function Settings({ className }: SettingsProps) {
                     <SelectItem value="kfgq">KFGQ</SelectItem>
                     <SelectItem value="me-quran">Me Quran</SelectItem>
                     <SelectItem value="al-mushaf">Al Mushaf</SelectItem>
-                    <SelectItem value="al-mushaf">Amiri Quran</SelectItem>
+                    <SelectItem value="amiri-quran">Amiri Quran</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

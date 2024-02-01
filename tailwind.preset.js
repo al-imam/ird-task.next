@@ -159,7 +159,7 @@ module.exports = {
           "--popover-foreground": "0 0 0",
 
           "--primary": "31 164 91",
-          "--primary-foreground": "57 57 57",
+          "--primary-foreground": "255 255 255",
 
           "--secondary": "255 255 255",
           "--secondary-foreground": "0 0 0",

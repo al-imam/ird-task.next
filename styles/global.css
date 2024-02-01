@@ -78,7 +78,3 @@
     @apply gap-2;
   }
 }
-
-:where(button, a):focus-visible {
-  @apply top-3 outline-none ring-2 ring-gray-900;
-}
