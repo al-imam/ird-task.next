@@ -43,7 +43,9 @@ export function DuaCard({ dua }: { dua: Dua }) {
           </div>
         )}
 
-        <DuaCardAction />
+        <DuaCardAction
+          textToCopy={`${dua.dua_name_en ?? ""}\n\n${dua.top_en}\n\nReference: ${dua.refference_en ?? "Not Available"}`}
+        />
       </div>
     </div>
   );

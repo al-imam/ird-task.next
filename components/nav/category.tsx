@@ -35,7 +35,7 @@ export function Category({ nav, className, close, ...rest }: CategoryProps) {
           className
         )}
       >
-        <div className="h-[3.75rem] rounded-[0.625rem] bg-[rgb(var(--list-img-bg))] p-2.5">
+        <div className="h-[3.75rem] w-[3.75rem] rounded-[0.625rem] bg-[rgb(var(--list-img-bg))] p-2.5">
           <img src={`/icons/${nav.cat_icon}.svg`} alt={nav.cat_name_en} className="" />
         </div>
         <div className={cn("flex-1 border-r pr-1 group-hover:border-r-0", { "border-r-0": isActive })}>
