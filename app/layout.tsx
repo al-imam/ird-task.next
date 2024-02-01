@@ -2,6 +2,8 @@ import { DesktopTopNav, Icons, SideIconsNav } from "$components/nav";
 import { Categories } from "$components/nav/categories";
 import { Settings } from "$components/settings";
 import { Provider } from "$context";
+import "react-h5-audio-player/lib/styles.css";
+
 import "$styles/global.css";
 import { Navigation } from "$types";
 import { joinUrl } from "$util";
@@ -9,6 +11,8 @@ import axios from "axios";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
+
+export const revalidate = "";
 
 export const metadata: Metadata = {
   title: "Dua & Ruqyah | All Duas Collection",

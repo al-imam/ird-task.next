@@ -2,9 +2,9 @@ import bookmarkIcon from "$assets/icons/bookmark.svg";
 import copyIcon from "$assets/icons/copy.svg";
 import duaCardIcon from "$assets/icons/duacard.svg";
 import planIcon from "$assets/icons/plan.svg";
-import playButtonIcon from "$assets/icons/play-button.svg";
 import reportIcon from "$assets/icons/report.svg";
 import shareIcon from "$assets/icons/share.svg";
+import { PLayer } from "$components/audio";
 import { Dua } from "$types";
 import Image from "next/image";
 
@@ -39,14 +39,14 @@ export function DuaCard({ dua }: { dua: Dua }) {
         </div>
       )}
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
         {dua.audio && (
-          <button className="mr-auto rounded-full">
-            <Image src={playButtonIcon} alt="play-audio" />
-          </button>
+          <div className="sm:flex-1">
+            <PLayer src={dua.audio} />
+          </div>
         )}
 
-        <div className="ml-auto flex h-full items-center justify-between gap-8">
+        <div className="ml-auto flex h-full items-center justify-between gap-4 sm:gap-8">
           <button className="transition-transform hover:scale-105 focus-visible:ring-0">
             <Image src={copyIcon} alt="copy" />
           </button>

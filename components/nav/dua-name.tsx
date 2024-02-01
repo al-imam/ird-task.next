@@ -21,7 +21,7 @@ export function DuaName({ className, nav, catName, ...rest }: DuaNameProps) {
     <li>
       <Link
         href={`/${catName}?cat=${nav.cat_id}&sub=${nav.subcat_id}&dua=${nav.dua_id}`}
-        className={cn("flex gap-4 py-2 pr-2", { "text-primary": isActive }, className)}
+        className={cn("flex gap-4 pr-2", { "text-primary": isActive }, className)}
         onClick={() => {
           setActiveDua(nav.dua_id);
           setTimeout(() => {
@@ -31,7 +31,7 @@ export function DuaName({ className, nav, catName, ...rest }: DuaNameProps) {
         }}
         {...rest}
       >
-        <Image src={Dua} alt="arrow" />
+        <Image src={Dua} alt="arrow" className="-mt-2" />
         {nav.dua_name_en}
       </Link>
     </li>

@@ -30,7 +30,7 @@ export function SubCategory({ className, nav, catName, ...rest }: SubCategoryPro
         {nav.subcat_name_en}
       </Link>
       {isActive && (
-        <ul>
+        <ul className="flex flex-col gap-2 py-3">
           {nav.duas.map(dua => (
             <DuaName key={dua.id} nav={dua} catName={catName} />
           ))}
