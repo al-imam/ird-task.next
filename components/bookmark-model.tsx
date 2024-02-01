@@ -8,6 +8,7 @@ import { Input } from "$shadcn/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "$shadcn/ui/select";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import Image from "next/image";
+import { useState } from "react";
 import { useMedia } from "react-use";
 
 interface ActionModelProps {
@@ -15,6 +16,8 @@ interface ActionModelProps {
 }
 
 function ActionModel({ close }: ActionModelProps) {
+  const [color, setColor] = useState<string>("primary");
+
   return (
     <div className="relative flex flex-col gap-4 px-4 pb-4  pt-8 sm:px-8 sm:pb-12 sm:pt-16">
       <div className="space-y-1">
@@ -40,15 +43,53 @@ function ActionModel({ close }: ActionModelProps) {
       <div className="space-y-2">
         <span className="text-base font-medium">Change Folder Color</span>
         <div className="flex justify-between">
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-primary"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#FFC107]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#9C27B0]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#2196F3]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#E91E63]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#3F51B5]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#00BCD4]"></span>
-          <span className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#8BC34A]">
-            <Image src={tickMarkIcon} alt="tick-mark" />
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-primary"
+            onClick={() => setColor("primary")}
+          >
+            {color === "primary" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#FFC107]"
+            onClick={() => setColor("[#FFC107]")}
+          >
+            {color === "[#FFC107]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#9C27B0]"
+            onClick={() => setColor("[#9C27B0]")}
+          >
+            {color === "[#9C27B0]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#2196F3]"
+            onClick={() => setColor("[#2196F3]")}
+          >
+            {color === "[#2196F3]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#E91E63]"
+            onClick={() => setColor("[#E91E63]")}
+          >
+            {color === "[#E91E63]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#3F51B5]"
+            onClick={() => setColor("[#3F51B5]")}
+          >
+            {color === "[#3F51B5]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#00BCD4]"
+            onClick={() => setColor("[#00BCD4]")}
+          >
+            {color === "[#00BCD4]" && <Image src={tickMarkIcon} alt="tick-mark" />}
+          </span>
+          <span
+            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#8BC34A]"
+            onClick={() => setColor("[#8BC34A]")}
+          >
+            {color === "[#8BC34A]" && <Image src={tickMarkIcon} alt="tick-mark" />}
           </span>
         </div>
       </div>
