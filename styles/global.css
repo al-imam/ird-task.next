@@ -66,6 +66,10 @@
     @apply bg-primary;
   }
 
+  .dua-player .rhap_current-left-time {
+    @apply text-foreground;
+  }
+
   .dua-player .rhap_progress-bar {
     @apply h-1;
   }
