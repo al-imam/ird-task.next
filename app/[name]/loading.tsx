@@ -3,7 +3,7 @@ import { rand } from "$util";
 export default function Loading() {
   return (
     <div className="grid gap-5">
-      <div className="rounded-[0.625rem] bg-background px-8 py-4">
+      <div className="rounded-[0.625rem] bg-background px-4 py-4 sm:px-8">
         <div style={{ width: `${rand(60, 90)}%` }} className="h-6 animate-pulse rounded-md bg-muted" />
       </div>
 
@@ -16,7 +16,7 @@ export default function Loading() {
 
 function DuaCardLoadingV2() {
   return (
-    <div className="space-y-9 rounded-[0.625rem] bg-background px-8 py-4">
+    <div className="space-y-9 rounded-[0.625rem] bg-background px-4 py-4 sm:px-8">
       <div className="flex items-center gap-4">
         <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
         <div style={{ width: `${rand(60, 90)}%` }} className="h-4 animate-pulse rounded-md bg-muted" />
@@ -57,7 +57,7 @@ function DuaCardLoadingV2() {
 
 function DuaCardLoadingV1() {
   return (
-    <div className="space-y-9 rounded-[0.625rem] bg-background px-8 py-4">
+    <div className="space-y-9 rounded-[0.625rem] bg-background px-4 py-4 sm:px-8">
       <div className="flex items-center gap-4">
         <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
         <div style={{ width: `${rand(60, 90)}%` }} className="h-4 animate-pulse rounded-md bg-muted" />

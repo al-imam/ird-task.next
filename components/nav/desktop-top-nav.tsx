@@ -12,7 +12,6 @@ import projectsIcon from "$assets/icons/projects.svg";
 import rectAngle from "$assets/icons/rectangle.svg";
 import settingIcon from "$assets/icons/settings.svg";
 import supportIcon from "$assets/icons/support.svg";
-
 import { Settings } from "$components/settings";
 import { SearchGlobal } from "$components/utils";
 import { Popover, PopoverContent } from "$shadcn/ui/popover";
@@ -56,7 +55,7 @@ export function DesktopTopNav({ className, navigation, ...rest }: DesktopTopNavP
         </SheetTrigger>
         <SheetContent
           side={"left"}
-          className="w-[min(95%,35rem)] overflow-hidden rounded-r-2xl border-0 p-0 sm:max-w-full"
+          className="w-[min(85%,35rem)] overflow-hidden rounded-r-2xl border-0 p-0 sm:max-w-full"
         >
           <Categories navigation={navigation} close={() => setIsOpen(false)} className="h-screen rounded-none" />
         </SheetContent>
@@ -73,7 +72,7 @@ export function DesktopTopNav({ className, navigation, ...rest }: DesktopTopNavP
             <span className="sr-only">open setting</span>
           </button>
         </SheetTrigger>
-        <SheetContent className="w-[min(95%,400px)] rounded-l-2xl">
+        <SheetContent className="w-[min(85%,400px)] rounded-l-2xl">
           <Settings className="rounded-none border-0 p-0" />
         </SheetContent>
       </Sheet>

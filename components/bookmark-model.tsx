@@ -122,14 +122,16 @@ export function BookmarkAction({ isOpen, setIsOpen }: BookmarkActionProps) {
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button className="transition-transform hover:scale-[1.02] focus-visible:ring-0">
-              <Image src={bookmarkIcon} alt="bookmark" />
-            </button>
-          </TooltipTrigger>
-          <TooltipContent className="shadow">Bookmark</TooltipContent>
-        </Tooltip>
+        <div className="flex items-center justify-center">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button className="transition-transform hover:scale-[1.02] focus-visible:ring-0">
+                <Image src={bookmarkIcon} alt="bookmark" />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent className="shadow">Bookmark</TooltipContent>
+          </Tooltip>
+        </div>
       </DrawerTrigger>
       <DrawerContent>
         <ActionModel close={() => setIsOpen(false)} />

@@ -25,9 +25,9 @@
 
 @layer utilities {
   .dua-player {
-    background: transparent;
-    padding: 0;
-    box-shadow: unset;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: unset !important;
   }
 
   .dua-player :is(.rhap_forward-button, .rhap_rewind-button, .rhap_progress-section) {

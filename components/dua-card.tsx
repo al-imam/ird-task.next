@@ -6,7 +6,10 @@ import Image from "next/image";
 
 export function DuaCard({ dua }: { dua: Dua }) {
   return (
-    <div id={`dua-${dua.dua_id}`} className="flex flex-col gap-7 rounded-[0.625rem] border bg-background px-8 py-4">
+    <div
+      id={`dua-${dua.dua_id}`}
+      className="flex flex-col gap-7 rounded-[0.625rem] border bg-background px-4 py-4 sm:px-8"
+    >
       <p className="flex items-center gap-2.5 text-base font-semibold text-primary">
         <Image src={duaCardIcon} alt="allah" /> <span>{dua.dua_name_en}</span>
       </p>
