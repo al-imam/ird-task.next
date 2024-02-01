@@ -1,11 +1,13 @@
 "use client";
 
+import bookmarkIcon from "$assets/icons/bookmark.svg";
 import tickMarkIcon from "$assets/icons/tick-mark.svg";
 import { Button } from "$shadcn/ui/button";
 import { Dialog, DialogContent } from "$shadcn/ui/dialog";
 import { Drawer, DrawerContent, DrawerTrigger } from "$shadcn/ui/drawer";
 import { Input } from "$shadcn/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "$shadcn/ui/select";
+import { Tooltip, TooltipContent, TooltipTrigger } from "$shadcn/ui/tooltip";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { useState } from "react";
@@ -13,6 +15,28 @@ import { useMedia } from "react-use";
 
 interface ActionModelProps {
   close: () => void;
+}
+
+const colors = ["#FFC107", "#9C27B0", "#2196F3", "#E91E63", "#3F51B5", "#00BCD4", "#8BC34A"];
+
+function ColorOption({
+  color,
+  setColor,
+  selectedColor,
+}: {
+  color: string;
+  selectedColor: string;
+  setColor: () => void;
+}) {
+  return (
+    <span
+      className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-md`}
+      style={{ background: color }}
+      onClick={setColor}
+    >
+      {selectedColor === color && <Image src={tickMarkIcon} alt="tick-mark" />}
+    </span>
+  );
 }
 
 function ActionModel({ close }: ActionModelProps) {
@@ -49,48 +73,9 @@ function ActionModel({ close }: ActionModelProps) {
           >
             {color === "primary" && <Image src={tickMarkIcon} alt="tick-mark" />}
           </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#FFC107]"
-            onClick={() => setColor("[#FFC107]")}
-          >
-            {color === "[#FFC107]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#9C27B0]"
-            onClick={() => setColor("[#9C27B0]")}
-          >
-            {color === "[#9C27B0]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#2196F3]"
-            onClick={() => setColor("[#2196F3]")}
-          >
-            {color === "[#2196F3]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#E91E63]"
-            onClick={() => setColor("[#E91E63]")}
-          >
-            {color === "[#E91E63]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#3F51B5]"
-            onClick={() => setColor("[#3F51B5]")}
-          >
-            {color === "[#3F51B5]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#00BCD4]"
-            onClick={() => setColor("[#00BCD4]")}
-          >
-            {color === "[#00BCD4]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
-          <span
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-[#8BC34A]"
-            onClick={() => setColor("[#8BC34A]")}
-          >
-            {color === "[#8BC34A]" && <Image src={tickMarkIcon} alt="tick-mark" />}
-          </span>
+          {colors.map(c => (
+            <ColorOption key={c} selectedColor={color} color={c} setColor={() => setColor(c)} />
+          ))}
         </div>
       </div>
 
@@ -107,16 +92,26 @@ function ActionModel({ close }: ActionModelProps) {
 interface BookmarkActionProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
-  children: React.ReactNode;
 }
 
-export function BookmarkAction({ isOpen, setIsOpen, children }: BookmarkActionProps) {
+export function BookmarkAction({ isOpen, setIsOpen }: BookmarkActionProps) {
   const isDesktop = useMedia("(min-width: 640px)", false);
 
   if (isDesktop) {
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>{children}</DialogTrigger>
+        <DialogTrigger asChild>
+          <div className="flex items-center justify-center">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="transition-transform hover:scale-[1.02] focus-visible:ring-0">
+                  <Image src={bookmarkIcon} alt="bookmark" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent className="shadow">Bookmark</TooltipContent>
+            </Tooltip>
+          </div>
+        </DialogTrigger>
         <DialogContent className="border-0 p-0 shadow">
           <ActionModel close={() => setIsOpen(false)} />
         </DialogContent>
@@ -126,7 +121,16 @@ export function BookmarkAction({ isOpen, setIsOpen, children }: BookmarkActionPr
 
   return (
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
-      <DrawerTrigger asChild>{children}</DrawerTrigger>
+      <DrawerTrigger asChild>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button className="transition-transform hover:scale-[1.02] focus-visible:ring-0">
+              <Image src={bookmarkIcon} alt="bookmark" />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="shadow">Bookmark</TooltipContent>
+        </Tooltip>
+      </DrawerTrigger>
       <DrawerContent>
         <ActionModel close={() => setIsOpen(false)} />
       </DrawerContent>
