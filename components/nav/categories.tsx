@@ -17,7 +17,12 @@ export function Categories({ className, navigation, close = () => {}, ...rest }:
   const [search, setSearch] = useState("");
 
   const navigationFiltered = useMemo(
-    () => navigation.filter(nav => nav.cat_name_en.includes(search) || nav.cat_id.toString().includes(search)),
+    () =>
+      navigation.filter(
+        nav =>
+          nav.cat_name_en.toLowerCase().includes(search.toLowerCase()) ||
+          nav.cat_id.toString().includes(search.toLowerCase())
+      ),
     [search]
   );
 
