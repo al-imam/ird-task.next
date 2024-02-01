@@ -9,10 +9,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "$shadc
 import { cn } from "$shadcn/utils";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "sonner";
 
 function copy(text: string) {
+  toast.success("Copied to clipboard");
   if (navigator && navigator.clipboard) return navigator.clipboard.writeText(text);
-
   const tempTextArea = document.createElement("textarea");
   tempTextArea.value = text;
   document.body.appendChild(tempTextArea);
