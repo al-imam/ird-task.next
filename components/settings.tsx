@@ -1,6 +1,7 @@
 "use client";
 
 import { FontIcon, GeneraleIcon, LanguageIcon } from "$icons";
+import { Button } from "$shadcn/ui/button";
 import { Checkbox } from "$shadcn/ui/checkbox";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "$shadcn/ui/select";
 import { Slider } from "$shadcn/ui/slider";
@@ -12,14 +13,14 @@ import { SVGProps, useState } from "react";
 interface SettingsProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {}
 
 export function Settings({ className }: SettingsProps) {
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<string | null>("language");
 
   return (
     <aside className={cn("rounded-3xl border bg-background p-4", className)}>
       <div className="p-4 text-center max-2xl:py-8">
         <p className="text-base  font-semibold max-2xl:text-lg">Settings</p>
       </div>
-      <div className="space-y-4">
+      <div className="space-y-4 text-sm">
         <SettingItem
           Icon={LanguageIcon}
           text="Language Settings"
@@ -27,9 +28,9 @@ export function Settings({ className }: SettingsProps) {
           setActive={setActive}
           active={active}
         >
-          <div className="flex gap-2 rounded-b-md border border-t-0 px-4 py-5 *:flex-1">
-            <button className="rounded-md border bg-primary py-1.5 text-white hover:brightness-110">English</button>
-            <button className="rounded-md border py-1.5 hover:bg-muted">Bangla</button>
+          <div className="flex gap-2 rounded-b-md border border-t-0 p-4 py-6 *:flex-1">
+            <Button>English</Button>
+            <Button variant={"outline"}>Bangla</Button>
           </div>
         </SettingItem>
         <SettingItem
@@ -39,7 +40,7 @@ export function Settings({ className }: SettingsProps) {
           setActive={setActive}
           active={active}
         >
-          <div className="flex flex-col gap-2 rounded-b-md border border-t-0 px-4 py-5 *:flex-1">
+          <div className="space-y-2 rounded-b-md border border-t-0 p-4 py-6 text-foreground">
             <label htmlFor="show-arabic" className="flex w-full items-center justify-between">
               Show Arabic
               <Checkbox id="show-arabic" />
@@ -59,7 +60,7 @@ export function Settings({ className }: SettingsProps) {
           </div>
         </SettingItem>
         <SettingItem Icon={FontIcon} text="Font Settings" value="font" setActive={setActive} active={active}>
-          <div className="flex flex-col gap-4 rounded-b-md border border-t-0 px-4 py-5 *:flex-1">
+          <div className="space-y-6 rounded-b-md border border-t-0 px-4 py-6">
             <div className="space-y-3">
               <span>Translation Font Size</span>
               <Slider defaultValue={[33]} max={100} step={1} />
@@ -107,7 +108,7 @@ export function Settings({ className }: SettingsProps) {
           setActive={setActive}
           active={active}
         >
-          <div className="flex  gap-2 rounded-b-md border border-t-0 px-4 py-5">
+          <div className="flex gap-2 rounded-b-md border border-t-0 px-4 py-6">
             <label className="flex-1" htmlFor="night-mode">
               Night Mode
             </label>
@@ -137,7 +138,7 @@ function SettingItem({ children, text, Icon, setActive, value, active }: Setting
         <motion.div
           key="question"
           className={cn(
-            "relative flex cursor-pointer items-center gap-2.5 rounded-md bg-muted-100 p-2.5 pl-4 before:pointer-events-none before:absolute before:inset-0 before:right-auto before:w-1  before:rounded-l-full",
+            "relative flex cursor-pointer items-center gap-2.5 rounded-md bg-muted-100 px-3.5 py-2.5 before:pointer-events-none before:absolute before:inset-0 before:right-auto before:w-1  before:rounded-l-full",
             { "before:bg-primary": isOpen }
           )}
           onClick={() => setActive(value)}
