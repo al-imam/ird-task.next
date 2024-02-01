@@ -32,7 +32,7 @@ export default async function DuaPage({
   const subCats = data.map(c => c.sub_categories).flat(1);
 
   return (
-    <ScrollArea className="mb-[--padding-edge]">
+    <ScrollArea scrollBarClassName="h-[calc(100%-var(--padding-edge,0px))]">
       <main className="flex flex-col gap-3">
         {subCats.length === 0 && (
           <p className="my-auto h-full py-10 text-center text-4xl font-semibold">No duas found</p>
@@ -53,6 +53,7 @@ export default async function DuaPage({
           </Fragment>
         ))}
       </main>
+      <div className="h-[--padding-edge]" />
     </ScrollArea>
   );
 }
