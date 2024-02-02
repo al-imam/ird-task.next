@@ -1,7 +1,6 @@
 import { DesktopTopNav, Icons, SideIconsNav } from "$components/nav";
 import { Categories } from "$components/nav/categories";
 import { Settings } from "$components/settings";
-
 import { ScrollArea } from "$shadcn/ui/scroll-area";
 import { Navigation } from "$types";
 import { joinUrl } from "$util";

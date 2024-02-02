@@ -14,7 +14,7 @@ import { SVGProps, useState } from "react";
 interface SettingsProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {}
 
 export function Settings({ className }: SettingsProps) {
-  const [active, setActive] = useState<string | null>("language");
+  const [active, setActive] = useState<string | null>("appearance");
 
   return (
     <aside className={cn("rounded-3xl border bg-background p-4", className)}>

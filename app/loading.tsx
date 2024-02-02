@@ -1,5 +1,5 @@
-import { IconsSkeleton } from "$components/nav";
-import { SettingsSkeleton } from "$components/settings";
+import { CategoriesSkeleton, DesktopTopNav, Icons, SideIconsNav } from "$components/nav";
+import { Settings } from "$components/settings";
 import { ScrollArea } from "$shadcn/ui/scroll-area";
 import { rand } from "$util";
 import { Fragment } from "react";
@@ -8,12 +8,12 @@ export default function Loading() {
   return (
     <Fragment>
       <div className="bg-background px-[--padding-edge] py-4 xl:hidden">
-        <div className="top-0" />
+        <DesktopTopNav className="top-0" />
       </div>
       <div className="xl:layout-xl lg:layout-lg 2xl:layout-2xl grid  w-full gap-[--layout-gap] overflow-hidden p-[--padding-edge] pb-0">
-        <div className="row-span-full mb-[--padding-edge] max-xl:hidden" />
-        <div className="col-start-2 col-end-[-1] max-xl:hidden" />
-        <div className="h-[calc(100%-var(--padding-edge,0px))] max-lg:hidden" />
+        <SideIconsNav className="row-span-full mb-[--padding-edge] max-xl:hidden" />
+        <DesktopTopNav className="col-start-2 col-end-[-1] max-xl:hidden" />
+        <CategoriesSkeleton className="h-[calc(100%-var(--padding-edge,0px))] max-lg:hidden" />
         <ScrollArea scrollBarClassName="h-[calc(100%-var(--padding-edge,0px))]">
           <div className="grid gap-5">
             <div className="rounded-[0.625rem] bg-background px-4 py-4 sm:px-8">
@@ -24,10 +24,10 @@ export default function Loading() {
           </div>
           <div className="h-[--padding-edge]" />
         </ScrollArea>
-        <SettingsSkeleton className="h-[calc(100%-var(--padding-edge,0px))] max-2xl:hidden" />
+        <Settings className="h-[calc(100%-var(--padding-edge,0px))] max-2xl:hidden" />
       </div>
       <div className="rounded-t-3xl bg-background px-[--padding-edge] py-4 xl:hidden">
-        <IconsSkeleton className="flex-row justify-between gap-1 px-0 py-2" />
+        <Icons className="flex-row justify-between gap-1 px-0 py-2" />
       </div>
     </Fragment>
   );
