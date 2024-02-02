@@ -16,7 +16,7 @@ export function Settings({ className }: SettingsProps) {
   const [active, setActive] = useState<string | null>("language");
 
   return (
-    <aside className={cn("rounded-3xl border bg-background p-4", className)}>
+    <aside className={cn("overflow-hidden rounded-3xl border bg-background p-4", className)}>
       <div className="p-4 text-center max-2xl:py-8">
         <p className="text-base  font-semibold max-2xl:text-lg">Settings</p>
       </div>
@@ -133,8 +133,8 @@ function SettingItem({ children, text, Icon, setActive, value, active }: Setting
   const isOpen = value === active;
 
   return (
-    <motion.div>
-      <AnimatePresence>
+    <motion.div className="overflow-hidden">
+      <AnimatePresence initial={false}>
         <motion.div
           key="question"
           className={cn(
@@ -152,16 +152,23 @@ function SettingItem({ children, text, Icon, setActive, value, active }: Setting
         {isOpen && (
           <motion.div
             key="answer"
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, height: 0 }}
             animate={{
               opacity: 1,
+              height: "auto",
               transition: {
-                duration: 0.5,
+                duration: 0.3,
               },
             }}
-            exit={{ opacity: 0 }}
+            exit={{
+              opacity: 0,
+              height: 0,
+              transition: {
+                duration: 0.2,
+              },
+            }}
           >
-            {children}
+            <div>{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
