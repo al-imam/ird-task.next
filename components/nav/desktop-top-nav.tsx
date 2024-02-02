@@ -35,7 +35,7 @@ const items = [
 ];
 
 interface DesktopTopNavProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-  navigation: Navigation[];
+  navigation?: Navigation[];
 }
 
 export function DesktopTopNav({ className, navigation, ...rest }: DesktopTopNavProps) {
@@ -57,7 +57,9 @@ export function DesktopTopNav({ className, navigation, ...rest }: DesktopTopNavP
           side={"left"}
           className="w-[min(85%,35rem)] overflow-hidden rounded-r-2xl border-0 p-0 sm:max-w-full"
         >
-          <Categories navigation={navigation} close={() => setIsOpen(false)} className="h-screen rounded-none" />
+          {navigation && (
+            <Categories navigation={navigation} close={() => setIsOpen(false)} className="h-screen rounded-none" />
+          )}
         </SheetContent>
       </Sheet>
 
