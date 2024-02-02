@@ -23,6 +23,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Categories } from "./categories";
+import { CategoriesSkeleton } from "./categories-skeleton";
 
 const items = [
   { text: "Support Us", icon: supportIcon },
@@ -57,8 +58,10 @@ export function DesktopTopNav({ className, navigation, ...rest }: DesktopTopNavP
           side={"left"}
           className="w-[min(85%,35rem)] overflow-hidden rounded-r-2xl border-0 p-0 sm:max-w-full"
         >
-          {navigation && (
+          {navigation ? (
             <Categories navigation={navigation} close={() => setIsOpen(false)} className="h-screen rounded-none" />
+          ) : (
+            <CategoriesSkeleton className="h-screen rounded-none" />
           )}
         </SheetContent>
       </Sheet>

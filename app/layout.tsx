@@ -1,10 +1,11 @@
-import { DesktopTopNav, Icons, SideIconsNav } from "$components/nav";
-import { Settings } from "$components/settings";
-import { Provider } from "$context";
 import "react-h5-audio-player/lib/styles.css";
 
+import { DesktopTopNav, Icons, SideIconsNav } from "$components/nav";
 import { CategoriesNav } from "$components/nav/categories-nav";
+import { CategoriesSkeleton } from "$components/nav/categories-skeleton";
 import { Nav } from "$components/nav/nav";
+import { Settings } from "$components/settings";
+import { Provider } from "$context";
 import "$styles/global.css";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -52,7 +53,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Suspense fallback={<DesktopTopNav className="col-start-2 col-end-[-1] max-xl:hidden" />}>
               <Nav className="col-start-2 col-end-[-1] max-xl:hidden" />
             </Suspense>
-            <Suspense fallback={<h1 className="h-[calc(100%-var(--padding-edge,0px))] max-lg:hidden">Loading...</h1>}>
+            <Suspense
+              fallback={<CategoriesSkeleton className="h-[calc(100%-var(--padding-edge,0px))] max-lg:hidden" />}
+            >
               <CategoriesNav className="h-[calc(100%-var(--padding-edge,0px))] max-lg:hidden" />
             </Suspense>
             {children}
