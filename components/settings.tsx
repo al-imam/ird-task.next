@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Slider } from "$shadcn/ui/slider";
 import { Switch } from "$shadcn/ui/switch";
 import { cn } from "$shadcn/utils";
+import { rand } from "$util";
 import { AnimatePresence, motion } from "framer-motion";
 import { SVGProps, useState } from "react";
 
@@ -166,5 +167,36 @@ function SettingItem({ children, text, Icon, setActive, value, active }: Setting
         )}
       </AnimatePresence>
     </motion.div>
+  );
+}
+
+interface SettingsSkeletonProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {}
+
+export function SettingsSkeleton({ className }: SettingsSkeletonProps) {
+  return (
+    <div className={cn("rounded-3xl bg-background p-4", className)}>
+      <div className="p-4 max-2xl:py-8">
+        <div className="mx-auto h-6 rounded-md bg-muted" style={{ width: `${rand(40, 70)}%` }} />
+      </div>
+      <div className="space-y-4">
+        <SettingsItemsSkeleton />
+        <div className="flex gap-4 px-4 py-2">
+          <div className="h-[2.375rem] flex-1 animate-pulse rounded-md bg-muted" />
+          <div className="h-[2.375rem] flex-1 animate-pulse rounded-md bg-muted-selected" />
+        </div>
+        <SettingsItemsSkeleton />
+        <SettingsItemsSkeleton />
+        <SettingsItemsSkeleton />
+      </div>
+    </div>
+  );
+}
+
+export function SettingsItemsSkeleton() {
+  return (
+    <div className="flex items-center gap-2.5 rounded-md bg-muted-100 px-3.5 py-2.5">
+      <div className="h-[2.375rem] w-[2.375rem] animate-pulse rounded-full bg-muted-selected" />
+      <div className="h-5 animate-pulse rounded-full bg-muted-selected" style={{ width: `${rand(40, 70)}%` }} />
+    </div>
   );
 }

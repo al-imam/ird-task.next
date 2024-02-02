@@ -48,6 +48,22 @@ export function Icons({ className, ...rest }: IconsProps) {
   );
 }
 
+interface IconsSkeletonProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+export function IconsSkeleton({ className, ...rest }: IconsSkeletonProps) {
+  return (
+    <div className={cn("flex flex-col gap-7", className)} {...rest}>
+      <IconSkeleton />
+      <IconSkeleton />
+      <IconSkeleton />
+      <IconSkeleton />
+      <IconSkeleton />
+      <IconSkeleton />
+      <IconSkeleton />
+    </div>
+  );
+}
+
 function Icon({ icon, sr }: { icon: any; sr: string }) {
   return (
     <Link
@@ -58,4 +74,8 @@ function Icon({ icon, sr }: { icon: any; sr: string }) {
       <span className="sr-only">{sr}</span>
     </Link>
   );
+}
+
+export function IconSkeleton() {
+  return <div className="flex h-[2.375rem] w-[2.375rem] animate-pulse rounded-full bg-muted-selected" />;
 }
