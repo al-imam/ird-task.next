@@ -41,7 +41,7 @@ export function DuaCardAction({ className, textToCopy, ...rest }: DuaCardActionP
               <Image src={copyIcon} alt="copy" />
             </button>
           </TooltipTrigger>
-          <TooltipContent className="shadow">Copy</TooltipContent>
+          <TooltipContent className="shadow max-sm:hidden">Copy</TooltipContent>
         </Tooltip>
 
         <BookmarkAction isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -52,7 +52,7 @@ export function DuaCardAction({ className, textToCopy, ...rest }: DuaCardActionP
               <Image src={planIcon} alt="memorize" />
             </button>
           </TooltipTrigger>
-          <TooltipContent className="shadow">Memorize</TooltipContent>
+          <TooltipContent className="shadow max-sm:hidden">Memorize</TooltipContent>
         </Tooltip>
 
         <Tooltip>
@@ -61,7 +61,7 @@ export function DuaCardAction({ className, textToCopy, ...rest }: DuaCardActionP
               <Image src={shareIcon} alt="share" />
             </button>
           </TooltipTrigger>
-          <TooltipContent className="shadow">Share</TooltipContent>
+          <TooltipContent className="shadow max-sm:hidden">Share</TooltipContent>
         </Tooltip>
 
         <Tooltip>
@@ -70,7 +70,7 @@ export function DuaCardAction({ className, textToCopy, ...rest }: DuaCardActionP
               <Image src={reportIcon} alt="report" />
             </button>
           </TooltipTrigger>
-          <TooltipContent className="shadow">Report</TooltipContent>
+          <TooltipContent className="shadow max-sm:hidden">Report</TooltipContent>
         </Tooltip>
       </div>
     </TooltipProvider>

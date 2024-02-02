@@ -12,6 +12,8 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 
+export const revalidate = Infinity;
+
 export const metadata: Metadata = {
   title: "Dua & Ruqyah | All Duas Collection",
   icons: {
